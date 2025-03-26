@@ -1,0 +1,97 @@
+body{
+    background-color: black;
+}
+.margin{
+    margin:0px;
+    padding: 0px;
+}
+
+.wraper{
+    width: 60%;
+    margin: 70px auto;
+    background-color: black;
+    display: flex;
+    position: relative;
+    height:60vh;
+    gap:20px;
+    overflow: hidden;
+     /* border: 1px solid red; */
+}
+.slider{
+    /* width: 100%; */
+    background-repeat: no-repeat;
+    position: absolute;
+    top:0px;
+    width: 100%;
+    height: 100%;
+    left: 0px;
+    transform: translateX("0px");
+    background-size:cover;
+    background-position: top 20% left 40%;
+    transition: all 0.4s ease-in;
+    
+}
+.slider1{
+    z-index: 1;
+    background-image: url("https://gencraft.com/_next/static/images/img-gaming-4768d824a2eaaf54a9624fceac02dfa3.jpg");
+}
+.slider2{
+    background-image: url("https://gencraft.com/_next/static/images/img-cyberpunk-be5fdc30845f8b2ca8eae09905a621b5.jpg");
+}
+.slider3{
+    background-image: url("https://gencraft.com/_next/static/images/img-mystical-ae3b3e213326190dbeedf0eb7063342a.jpg");
+}
+.slider4{
+    background-image: url("https://gencraft.com/_next/static/images/img-makeup-c12a3a77b3964cdabd0e04e7d1c75079.jpg");
+}
+
+.btn{
+    width:45px;
+    height:45px;
+    background-color: white;
+    position: absolute;
+    box-shadow: 0px 0px 8px 2px rgba(0,0,0,0.3);
+    transform: translateY(-50%);
+    top:50%;
+    font-size: 35px;
+    font-weight: 800;
+    cursor: pointer;
+    text-align: center;
+    line-height: 45px;
+    border-radius: 50%;
+    z-index: 2;
+    /* border: 1px solid red; */
+}
+.left{
+    left:0px;
+
+}
+.right{
+    right:0px;
+
+}
+.dots{
+    position: absolute;
+    /* width:130px; */
+    height:20px;
+    /* border: 2px solid red; */
+    bottom: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    transform: translateX(-50%);
+    z-index: 2;
+    gap: 10px;
+    /* background-color: white; */
+}
+.dot{
+    width: 12px;
+    height: 12px;
+    cursor: pointer;
+    border-radius: 50%;
+    background-color: white;
+    border: 1px solid transparent;
+}
+.active{
+    background-color: rgb(160, 157, 157);
+}

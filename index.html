@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Slider</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+        <div class="wraper">
+            <div class="slider slider1">slider1</div>
+            <div class="slider slider2">slider2</div>
+            <div class="slider slider3">slider2</div>
+            <div class="slider slider4">slider2</div>
+            <div class="dots"></div>
+            <div class="btn left">&#8592;</div>
+            <div class="btn right">&#8594;</div>
+        </div>
+</body>
+
+<script>
+function Slider(){
+    let flag=0;
+    let slider=document.querySelectorAll(".slider");
+    console.log(slider)
+    const rightBtn=document.querySelector(".right");
+    const leftBtn=document.querySelector(".left");
+    let dotsElm=document.querySelector(".dots");
+
+   function sliderMove(ind){
+        slider.forEach((s,i)=>s.style.transform=`translateX(${100*(i-ind)}%)`);
+   }
+
+   function prevSlide(){
+        if(flag==0){
+            flag=slider.length;
+            
+        }
+        flag--;
+        sliderMove(flag);
+        activeDot(flag)
+    
+   };
+
+   function nextSlide(){
+        flag++;
+        if(flag>=slider.length){
+            flag=0
+            
+        }
+        sliderMove(flag)
+        activeDot(flag)
+   }
+
+
+    rightBtn.addEventListener("click",nextSlide)
+    leftBtn.addEventListener("click",prevSlide)
+
+   document.addEventListener("keyup",(e)=>{
+     if(e.key=="ArrowLeft"){
+        prevSlide();
+     }
+     if(e.key=="ArrowRight"){
+        nextSlide();
+     }
+   })
+
+    let createDot=()=>{
+    slider.forEach((s,i)=>{
+        let elm=`<div class="dot" data-set=${i}></div>`;
+        dotsElm.insertAdjacentHTML("beforeend",elm)
+    })
+    document.querySelector(".dot").classList.add("active");
+    }
+    createDot();
+     
+    let activeDot=(dind)=>{
+            document.querySelectorAll(".dot").forEach(dot=>dot.classList.remove("active"));
+            document.querySelector(`.dot[data-set="${dind}"]`).classList.add("active");
+    }
+
+    let eventDotMove=()=>{
+        dotsElm.addEventListener("click",(e)=>{
+            if(e.target.classList.contains("dot")){
+                let val=e.target.getAttribute("data-set");
+                 activeDot(val);
+                 sliderMove(val)
+            }
+        })
+    }
+    eventDotMove()
+}
+Slider()
+
+</script>
+</html>
